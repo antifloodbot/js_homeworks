@@ -6,46 +6,33 @@ var services = {
 
     price() {
         let total = 0;
-        for (const key in this) {
+        Object.keys(this).forEach(key => {
             if (typeof this[key] === "string") {
-                const cost = parseInt(this[key]);
-                total += cost;
+                total += parseInt(this[key]);
             }
-        }
+        });
         return total;
     },
 
     minPrice() {
-        let minArray = [];
-        for (const key in this) {
+        let min = Infinity;
+        Object.keys(this).forEach(key => {
             if (typeof this[key] === "string") {
                 const cost = parseInt(this[key]);
-                minArray.push(cost);
+                if (cost < min) min = cost;
             }
-        }
-        let min = minArray[0];
-        for (let i = 1; i < minArray.length; i++) {
-            if (minArray[i] < min) {
-                min = minArray[i];
-            }
-        }
+        });
         return min;
     },
 
     maxPrice() {
-        let maxArray = [];
-        for (const key in this) {
+        let max = -Infinity;
+        Object.keys(this).forEach(key => {
             if (typeof this[key] === "string") {
                 const cost = parseInt(this[key]);
-                maxArray.push(cost);
+                if (cost > max) max = cost;
             }
-        }
-        let max = maxArray[0];
-        for (let i = 1; i < maxArray.length; i++) {
-            if (maxArray[i] > max) {
-                max = maxArray[i];
-            }
-        }
+        });
         return max;
     }
 };
