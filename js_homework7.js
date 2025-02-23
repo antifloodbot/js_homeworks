@@ -15,7 +15,7 @@ var services = {
     },
 
     minPrice() {
-        let min = Infinity;
+        let min = 0;
         Object.keys(this).forEach(key => {
             if (typeof this[key] === "string") {
                 const cost = parseInt(this[key]);
@@ -26,7 +26,7 @@ var services = {
     },
 
     maxPrice() {
-        let max = -Infinity;
+        let max = 0;
         Object.keys(this).forEach(key => {
             if (typeof this[key] === "string") {
                 const cost = parseInt(this[key]);
@@ -36,3 +36,9 @@ var services = {
         return max;
     }
 };
+
+console.log(services.minPrice());
+console.log(services.maxPrice());
+console.log(services.price());
+
+
