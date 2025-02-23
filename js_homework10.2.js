@@ -1,15 +1,10 @@
-function filterWords(words) {
-    const regex = /\b(?!.*[Aa])[A-Za-z]{6,}\b/;
-    return words.filter(word => regex.test(word));
+function filterWords(sentence) {
+    const regex = /\b[b-zB-Z]{6,}\b/g;
+    return sentence.match(regex) || [];
 }
 
-const testCases = [
-    ["Wonderful", "Happiness", "Joyful", "Time", "Task", "Apple"],
-    ["Example", "Joyous", "Amazing", "Great", "Sunshine", "Bright"],
-    ["Lovely", "Friend", "Elephant", "Mountain", "Garden"],
-    ["Smile", "Peace", "Brilliant", "Cheerful", "Laughter"],
-];
-
-testCases.forEach((words, index) => {
-    console.log(`Test ${index + 1}:`, filterWords(words));
-});
+console.log('Test 1:', filterWords("Wonderful Happiness Joyful Time Task Apple"));
+console.log('Test 2:', filterWords("Example Joyous Amazing Great Sunshine Bright"));
+console.log('Test 3:', filterWords("Lovely Friend Elephant Mountain Garden"));
+console.log('Test 4:', filterWords("Smile Peace Brilliant Cheerful Laughter"));
+console.log('Test 5:', filterWords("Aa Aa Aa"));
